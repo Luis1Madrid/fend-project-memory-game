@@ -28,11 +28,15 @@ function shuffle(array) {
 function clickCard(evt) {
   if (evt.target.nodeName === "LI"){
     var info = evt.target.className;
-    //console.log(info);
-    if (info == "card") {
+    var cardsTurned = document.querySelectorAll(".open").length;
+
+// Show card if is not already turned up.
+    if (info == "card" && cardsTurned < 2) {
       evt.target.classList.add("open");
       evt.target.classList.add("show");
     }
+
+  console.log(cardsTurned);
   }
 }
 
