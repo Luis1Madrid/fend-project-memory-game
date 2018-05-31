@@ -28,15 +28,16 @@ function shuffle(array) {
 function clickCard(evt) {
   if (evt.target.nodeName === "LI"){
     var info = evt.target.className;
-    var cardsTurned = document.querySelectorAll(".open").length;
+    var cardsTurned = document.querySelectorAll(".open");
 
 // Show card if is not already turned up and only up to two at a time
-    if (info == "card" && cardsTurned < 2) {
+    if (info == "card" && cardsTurned.length < 2) {
       evt.target.classList.add("open");
       evt.target.classList.add("show");
     }
 
     matchCard();
+    
   }
 }
 
@@ -47,7 +48,12 @@ function matchCard(evt) {
   var cardOpenTwo = cardsOpen[1].childNodes[1].className;
   if (cardsOpen.length > 1) {
     if (cardOpenOne == cardOpenTwo) {
+      for (var x = 0; x < 2; x++){
+      cardsOpen[x].classList.remove("open", "show");
+      cardsOpen[x].classList.add("match");
+      }
       console.log("match!!");
+      console.log(cardsOpen);
     }
   }
   console.log(cardsOpen.length);
