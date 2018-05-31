@@ -30,16 +30,28 @@ function clickCard(evt) {
     var info = evt.target.className;
     var cardsTurned = document.querySelectorAll(".open").length;
 
-// Show card if is not already turned up.
+// Show card if is not already turned up and only up to two at a time
     if (info == "card" && cardsTurned < 2) {
       evt.target.classList.add("open");
       evt.target.classList.add("show");
     }
 
-  console.log(cardsTurned);
+    matchCard();
   }
 }
 
+function matchCard(evt) {
+
+  var cardsOpen = document.querySelectorAll(".open");
+  var cardOpenOne = cardsOpen[0].childNodes[1].className;
+  var cardOpenTwo = cardsOpen[1].childNodes[1].className;
+  if (cardsOpen.length > 1) {
+    if (cardOpenOne == cardOpenTwo) {
+      console.log("match!!");
+    }
+  }
+  console.log(cardsOpen.length);
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
