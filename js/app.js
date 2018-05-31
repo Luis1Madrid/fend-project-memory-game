@@ -28,7 +28,11 @@ function shuffle(array) {
 function clickCard(evt) {
   if (evt.target.nodeName === "LI"){
     var info = evt.target.className;
-    console.log(info);
+    //console.log(info);
+    if (info == "card") {
+      evt.target.classList.add("open");
+      evt.target.classList.add("show");
+    }
   }
 }
 
