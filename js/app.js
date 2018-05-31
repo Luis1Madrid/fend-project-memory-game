@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+document.querySelector(".deck").addEventListener("click", clickCard);
 
 /*
  * Display the cards on the page
@@ -23,6 +23,13 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+function clickCard(evt) {
+  if (evt.target.nodeName === "LI"){
+    var info = evt.target.className;
+    console.log(info);
+  }
 }
 
 
