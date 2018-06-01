@@ -44,10 +44,11 @@ function clickCard(evt) {
 
     if (activeMatch == 16){
       popWinCongrats();
+
     }
   console.log(activeMatch);
 }
-// matching a card engine
+//START matching a card engine
 function matchCard(evt) {
 
   var cardsOpen = document.querySelectorAll(".open");
@@ -74,13 +75,16 @@ function delayEventCard () {
     activeCards[x].classList.remove("open", "show");
   }
 }
+//END matching card engine
 
 //Congratulation window pop up
+
 function popWinCongrats () {
   var msg = document.createElement("dialog");
-  msg.textContent = "Congratulations!";
+  msg.textContent = "Congratulations completing the game!";
   msg.className = "dialogBox";
-  msg.close();
+  document.body.append(msg);
+
   var msgUpdate = document.querySelector("dialog");
   msgUpdate.showModal();
 
