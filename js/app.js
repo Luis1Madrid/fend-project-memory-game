@@ -35,12 +35,12 @@ function clickCard(evt) {
       evt.target.classList.add("open");
       evt.target.classList.add("show");
     }
-
+    if (cardsTurned.length > 0){
     matchCard();
-    
+    }
   }
 }
-
+// matching a card engine
 function matchCard(evt) {
 
   var cardsOpen = document.querySelectorAll(".open");
@@ -52,11 +52,20 @@ function matchCard(evt) {
       cardsOpen[x].classList.remove("open", "show");
       cardsOpen[x].classList.add("match");
       }
-      console.log("match!!");
-      console.log(cardsOpen);
+      //console.log("match!!");
+      //console.log(cardsOpen);
+    } else {
+      setTimeout(delayEventCard, 2000);
     }
   }
   console.log(cardsOpen.length);
+}
+
+function delayEventCard () {
+  var activeCards = document.querySelectorAll(".open");
+  for (var x = 0; x < 2; x++) {
+    activeCards[x].classList.remove("open", "show");
+  }
 }
 
 /*
