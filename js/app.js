@@ -25,6 +25,7 @@ function shuffle(array) {
     return array;
 }
 
+
 function clickCard(evt) {
   if (evt.target.nodeName === "LI"){
     var info = evt.target.className;
@@ -39,6 +40,12 @@ function clickCard(evt) {
     matchCard();
     }
   }
+  var activeMatch = document.querySelectorAll(".match").length;
+
+    if (activeMatch == 16){
+      popWinCongrats();
+    }
+  console.log(activeMatch);
 }
 // matching a card engine
 function matchCard(evt) {
@@ -53,7 +60,7 @@ function matchCard(evt) {
       cardsOpen[x].classList.add("match");
       }
       //console.log("match!!");
-      //console.log(cardsOpen);
+
     } else {
       setTimeout(delayEventCard, 2000);
     }
@@ -67,6 +74,19 @@ function delayEventCard () {
     activeCards[x].classList.remove("open", "show");
   }
 }
+
+//Congratulation window pop up
+function popWinCongrats () {
+  var msg = document.createElement("dialog");
+  msg.textContent = "Congratulations!";
+  msg.className = "dialogBox";
+  msg.close();
+  var msgUpdate = document.querySelector("dialog");
+  msgUpdate.showModal();
+
+}
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
