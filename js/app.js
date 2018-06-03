@@ -2,6 +2,7 @@
  * Create a list that holds all of your cards
  */
 document.querySelector(".deck").addEventListener("click", clickCard);
+document.querySelector(".restart").addEventListener("click", playSetup);
 
 /*
  * Display the cards on the page
@@ -46,7 +47,6 @@ function clickCard(evt) {
       popWinCongrats();
 
     }
-  console.log(activeMatch);
 }
 //START matching a card engine
 function matchCard(evt) {
@@ -77,19 +77,43 @@ function delayEventCard () {
 }
 //END matching card engine
 
-//Congratulation window pop up
+//Congratulation window pop up, along with all other data about the game.
 
 function popWinCongrats () {
   var msg = document.createElement("dialog");
-  msg.textContent = "Congratulations completing the game!";
   msg.className = "dialogBox";
   document.body.append(msg);
 
-  var msgUpdate = document.querySelector("dialog");
-  msgUpdate.showModal();
+  var messageCongrats = document.createElement("h2");
+  messageCongrats.textContent = "Congratulations finishing the game!";
+  msg.append(messageCongrats);
+
+  var playButton = document.createElement("button");
+  playButton.textContent = "Play again!";
+  playButton.className = "playAgain";
+  msg.append(playButton);
+  document.querySelector(".playAgain").addEventListener("click", playSetup);
+
+  msg.showModal();
 
 }
 
+// On click Play again, will run this function
+
+function playSetup() {
+  var matchCards = document.querySelectorAll(".match");
+  var activeCards = document.querySelectorAll(".card");
+  for (var x = 0; x < activeCards.length; x++) {
+    activeCards[x].classList.remove("match", "open", "show");
+
+  }
+  if (matchCards.length == 16) {
+  var track = document.querySelector("dialog").close();
+  }
+
+  console.log(activeCards);
+  console.log(track);
+}
 
 
 /*
