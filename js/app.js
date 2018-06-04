@@ -3,6 +3,8 @@
  */
 document.querySelector(".deck").addEventListener("click", clickCard);
 document.querySelector(".restart").addEventListener("click", playSetup);
+var timeStart = 0;
+var clicksPlaced = 0;
 
 /*
  * Display the cards on the page
@@ -47,6 +49,12 @@ function clickCard(evt) {
       popWinCongrats();
 
     }
+  //add time into html.
+  clicksPlaced = clicksPlaced + 1;
+  if (clicksPlaced == 1) {
+    timeKeeper();
+  }
+
 }
 //START matching a card engine
 function matchCard(evt) {
@@ -66,7 +74,6 @@ function matchCard(evt) {
       setTimeout(delayEventCard, 2000);
     }
   }
-  console.log(cardsOpen.length);
 }
 
 function delayEventCard () {
@@ -108,12 +115,32 @@ function playSetup() {
 
   }
   if (matchCards.length == 16) {
-  var track = document.querySelector("dialog").close();
+    var track = document.querySelector("dialog").close();
   }
 
-  console.log(activeCards);
-  console.log(track);
 }
+
+//count time to display
+function timeKeeper () {
+  var timeElement = document.createElement("span");
+  var timeTitle = document.createElement("span");
+  timeTitle.textContent = "TIME: "
+  timeElement.className = "timeKeep";
+  timeElement.textContent = timeStart;
+  var scorePanel = document.querySelector(".score-panel");
+  scorePanel.append(timeTitle);
+  scorePanel.append(timeElement);
+
+  console.log(scorePanel);
+}
+
+function timeLoop() {
+  timeStart = timeStart + 1;
+  document.querySelector(".timeKeep").innerHTML = timeStart + " sec";
+}
+
+setInterval(timeLoop, 1000);
+
 
 
 /*
