@@ -53,6 +53,7 @@ function clickCard(evt) {
   clicksPlaced = clicksPlaced + 1;
   if (clicksPlaced == 1) {
     timeKeeper();
+    setInterval(timeLoop, 1000);
   }
 
 }
@@ -139,7 +140,7 @@ function timeLoop() {
   document.querySelector(".timeKeep").innerHTML = timeStart + " sec";
 }
 
-setInterval(timeLoop, 1000);
+
 
 
 
