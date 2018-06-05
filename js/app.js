@@ -83,7 +83,7 @@ function matchCard(evt) {
     } else {
       setTimeout(delayEventCard, 1500);
       errorsMade = errorsMade + 1;
-      console.log(errorsMade);
+      console.log(document.querySelectorAll(".fa-star").length);
       starGame();
     }
   }
@@ -130,7 +130,7 @@ function popWinCongrats () {
 
 }
 
-// On click Play again, will run this function
+// On click Play again or Restart icon will run this function
 
 function playSetup() {
   var matchCards = document.querySelectorAll(".match");
@@ -148,6 +148,8 @@ function playSetup() {
   clearInterval(eternalLoop);
   timeStart = 0;
   document.querySelector(".timeKeep").innerHTML = timeStart + " sec";
+
+  replacingStars();
 }
 
 //count time to display
@@ -162,13 +164,13 @@ function timeKeeper () {
   scorePanel.append(timeElement);
 
 }
-
+//time to be called for an infinite interation until stopped.
 function timeLoop() {
   timeStart = timeStart + 1;
   document.querySelector(".timeKeep").innerHTML = timeStart + " sec";
 
 }
-
+//penalization pairs incorrect.
 function starGame() {
   var stars = document.querySelector(".fa-star");
   if (errorsMade == 3){
@@ -180,6 +182,24 @@ function starGame() {
   }
 }
 
+// restart or play again replanish starts function
+function replacingStars() {
+  var starNumber = document.querySelectorAll(".fa-star").length;
+  var parent = document.querySelector(".stars");
+
+  if (starNumber < 3) {
+    for (var x = 0; x+starNumber < 3; x++) {
+      var addStar = document.createElement("li");
+      var addInterior = document.createElement("i");
+      addInterior.classList.add("fa","fa-star");
+      addStar.append(addInterior);
+      parent.append(addStar);
+    }
+  }
+  var scorePanel = document.querySelector(".score-panel");
+  scorePanel.prepend(parent);
+  console.log(scorePanel);
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
