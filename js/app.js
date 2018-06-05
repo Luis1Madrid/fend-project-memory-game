@@ -5,6 +5,8 @@ document.querySelector(".deck").addEventListener("click", clickCard);
 document.querySelector(".restart").addEventListener("click", playSetup);
 var timeStart = 0;
 var clicksPlaced = 0;
+var resetClicked = 0;
+var eternalLoop;
 
 /*
  * Display the cards on the page
@@ -42,6 +44,7 @@ function clickCard(evt) {
     if (cardsTurned.length > 0){
     matchCard();
     }
+    clicksPlaced = clicksPlaced + 1;
   }
   var activeMatch = document.querySelectorAll(".match").length;
 
@@ -49,14 +52,19 @@ function clickCard(evt) {
       popWinCongrats();
 
     }
-  //add time into html.
-  clicksPlaced = clicksPlaced + 1;
-  if (clicksPlaced == 1) {
+  //add time into html on first click
+
+  if (clicksPlaced == 1 && resetClicked == 0) {
     timeKeeper();
-    setInterval(timeLoop, 1000);
+  }
+  if (clicksPlaced == 1){
+    eternalLoop = setInterval(timeLoop, 1000);
   }
 
+  //total clicks made
+  document.querySelector(".moves").textContent = clicksPlaced;
 }
+
 //START matching a card engine
 function matchCard(evt) {
 
@@ -118,7 +126,12 @@ function playSetup() {
   if (matchCards.length == 16) {
     var track = document.querySelector("dialog").close();
   }
-
+  clicksPlaced = 0;
+  document.querySelector(".moves").textContent = clicksPlaced;
+  resetClicked = resetClicked + 1;
+  clearInterval(eternalLoop);
+  timeStart = 0;
+  document.querySelector(".timeKeep").innerHTML = timeStart + " sec";
 }
 
 //count time to display
@@ -138,9 +151,8 @@ function timeKeeper () {
 function timeLoop() {
   timeStart = timeStart + 1;
   document.querySelector(".timeKeep").innerHTML = timeStart + " sec";
+
 }
-
-
 
 
 
