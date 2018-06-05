@@ -7,6 +7,7 @@ var timeStart = 0;
 var clicksPlaced = 0;
 var resetClicked = 0;
 var eternalLoop;
+var errorsMade = 0;
 
 /*
  * Display the cards on the page
@@ -80,7 +81,10 @@ function matchCard(evt) {
       //console.log("match!!");
 
     } else {
-      setTimeout(delayEventCard, 2000);
+      setTimeout(delayEventCard, 1500);
+      errorsMade = errorsMade + 1;
+      console.log(errorsMade);
+      starGame();
     }
   }
 }
@@ -113,6 +117,14 @@ function popWinCongrats () {
   var timer = document.createElement("span");
   timer.textContent = "Total Time Played: " + timeStart + " Seconds";
   msg.append(timer);
+
+  var starTitle = document.createElement("h2");
+  starTitle.textContent = "Stars"
+  msg.append(starTitle);
+
+  var starView = document.createElement("span");
+  starView.append(document.querySelector(".stars"));
+  msg.append(starView);
 
   msg.showModal();
 
@@ -149,7 +161,6 @@ function timeKeeper () {
   scorePanel.append(timeTitle);
   scorePanel.append(timeElement);
 
-  console.log(scorePanel);
 }
 
 function timeLoop() {
@@ -158,6 +169,16 @@ function timeLoop() {
 
 }
 
+function starGame() {
+  var stars = document.querySelector(".fa-star");
+  if (errorsMade == 3){
+    stars.remove();
+  } else if (errorsMade == 6) {
+    stars.remove();
+  } else if (errorsMade == 9) {
+    stars.remove();
+  }
+}
 
 
 /*
