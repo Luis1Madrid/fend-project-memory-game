@@ -50,7 +50,7 @@ function clickCard(evt) {
 
     if (activeMatch == 16){
       popWinCongrats();
-
+      clearInterval(eternalLoop);
     }
   //add time into html on first click
 
@@ -109,6 +109,10 @@ function popWinCongrats () {
   playButton.className = "playAgain";
   msg.append(playButton);
   document.querySelector(".playAgain").addEventListener("click", playSetup);
+
+  var timer = document.createElement("span");
+  timer.textContent = "Total Time Played: " + timeStart + " Seconds";
+  msg.append(timer);
 
   msg.showModal();
 
