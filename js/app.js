@@ -8,7 +8,8 @@ var clicksPlaced = 0;
 var resetClicked = 0;
 var eternalLoop;
 var errorsMade = 0;
-
+var cardShuffle = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-anchor", "fa-leaf", "fa-bicycle", "fa-diamond", "fa-bomb", "fa-leaf", "fa-bomb", "fa-bolt", "fa-bicycle", "fa-paper-plane-o", "fa-cube"];
+shuffleTrial2();
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -198,9 +199,39 @@ function replacingStars() {
   }
   var scorePanel = document.querySelector(".score-panel");
   scorePanel.prepend(parent);
-  console.log(scorePanel);
 }
+/* // Failied TRIAL to pass card shuffle.
+function shuffleTrial() {
+  var newCardShuffle = shuffle(cardShuffle);
+  var deck = document.querySelector(".deck")
+  deck.innerHTML = "";
+  for(var x = 0; x <= 15; x++) {
+    var liElement = document.createElement("li");
+    liElement.classList.add("card");
 
+    var iElement = document.createElement("i");
+    iElement.classList.add("fa");
+    iElement.classList.add(cardShuffle[x]);
+    liElement.append(iElement);
+    deck.append(liElement);
+  }
+  console.log(deck);
+  console.log(newCardShuffle);
+}
+*/
+function shuffleTrial2() {
+  var newCardShuffle = shuffle(cardShuffle);
+  var target = document.querySelectorAll(".fa");
+  var targetClass = target[4].classList[1];
+
+  for(var x = 4; x <= 19; x++) {
+    var removeClass = target[x].classList[1];
+    target[x].classList.remove(removeClass);
+    target[x].classList.add(newCardShuffle[(x-4)])
+  }
+  console.log(target);
+  console.log(targetClass);
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
