@@ -42,11 +42,11 @@ function clickCard(evt) {
     if (info == "card" && cardsTurned.length < 2) {
       evt.target.classList.add("open");
       evt.target.classList.add("show");
+      clicksPlaced = clicksPlaced + 1;
     }
     if (cardsTurned.length > 0){
     matchCard();
     }
-    clicksPlaced = clicksPlaced + 1;
   }
   var activeMatch = document.querySelectorAll(".match").length;
 
@@ -74,6 +74,7 @@ function matchCard(evt) {
   var cardOpenOne = cardsOpen[0].childNodes[1].className;
   var cardOpenTwo = cardsOpen[1].childNodes[1].className;
   if (cardsOpen.length > 1) {
+
     if (cardOpenOne == cardOpenTwo) {
       for (var x = 0; x < 2; x++){
       cardsOpen[x].classList.remove("open", "show");
@@ -82,9 +83,8 @@ function matchCard(evt) {
       //console.log("match!!");
 
     } else {
-      setTimeout(delayEventCard, 1500);
       errorsMade = errorsMade + 1;
-      console.log(document.querySelectorAll(".fa-star").length);
+      setTimeout(delayEventCard, 1500);
       starGame();
     }
   }
@@ -151,6 +151,7 @@ function playSetup() {
   document.querySelector(".timeKeep").innerHTML = timeStart + " sec";
 
   replacingStars();
+  shuffleTrial2();
 }
 
 //count time to display
@@ -229,8 +230,6 @@ function shuffleTrial2() {
     target[x].classList.remove(removeClass);
     target[x].classList.add(newCardShuffle[(x-4)])
   }
-  console.log(target);
-  console.log(targetClass);
 }
 /*
  * set up the event listener for a card. If a card is clicked:
