@@ -7,14 +7,12 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Memory game detects clicks on cards and keeps track of time, number of clicks, as we as number of errors. There is a "star" system on grading your game performance.
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+At the end of your game, the player will be able to see how well they performed.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+For contributing, please follow Udacity code layup requirements, and place comments as often as needed for a review to keep track of changes, and know the purpose of the new code.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
