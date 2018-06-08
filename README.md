@@ -1,18 +1,17 @@
-# Memory Game Project
+#Luis' Memory Game
+The standard memory game on which there is a 16 X 16 grid of cards. The player can only turn two card at a time. The game records the total play time along with the number of tries. Depending on how many tries takes the player to complete the game the "Star" accomplishments are set.
 
-## Table of Contents
+##Getting Started
+Copy all files from the html, css and javascript on they current folders. DO NOT try to move files around, since it might break the link with the html page. The CSS has a variety of elements, ids and classes to style the html. All titles are quite descriptive so I do not expect from the user to have any problem following up.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+Javascript is used for building the game rules and user interaction. All functions and events are self descriptive so there is not additional information needed to know.
 
-## Instructions
+##Prerequisites
+In order to temper with the files, some basic knowledge on html, css and javascript is required. If is only downloaded for playing memory game purposes there is not prerequisites.
 
-Memory game detects clicks on cards and keeps track of time, number of clicks, as we as number of errors. There is a "star" system on grading your game performance.
+##Give examples
+##Installing
+To install simply download all files and keep them together on a folder. Do not separate them or temper with them. Unless for modification purposes.
 
-At the end of your game, the player will be able to see how well they performed.
-
-## Contributing
-
-For contributing, please follow Udacity code layup requirements, and place comments as often as needed for a review to keep track of changes, and know the purpose of the new code.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+##Contribution
+Feel free to contribute to the project, the only requirement is to follow a Udacity standards of coding. 

@@ -42,7 +42,7 @@ function clickCard(evt) {
     if (info == "card" && cardsTurned.length < 2) {
       evt.target.classList.add("open");
       evt.target.classList.add("show");
-      clicksPlaced = clicksPlaced + 1;
+      clicksPlaced = clicksPlaced + 0.5;
     }
     if (cardsTurned.length > 0){
     matchCard();
